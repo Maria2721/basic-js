@@ -1,4 +1,4 @@
-const {NotImplementedError} = require('../extensions/index.js');
+const { NotImplementedError } = require("../lib");
 
 /**
  * Implement class VigenereCipheringMachine that allows us to create
@@ -26,16 +26,16 @@ class VigenereCipheringMachine {
 
   encrypt(message, key) {
     if (message === undefined || key === undefined) {
-      throw Error('Incorrect arguments!');
+      throw Error("Incorrect arguments!");
     }
 
     let str = [];
-    const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    const alphabetArr = alphabet.split('');
+    const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    const alphabetArr = alphabet.split("");
 
     // Create keyword of length equal to message
-    let messageArr = message.toUpperCase().split('');
-    let keyArr = key.toUpperCase().split('');
+    let messageArr = message.toUpperCase().split("");
+    let keyArr = key.toUpperCase().split("");
     let keyMessageArr = [];
     let pass = 0;
 
@@ -63,21 +63,21 @@ class VigenereCipheringMachine {
       }
     }
 
-    return this.modification ? str.join('') : str.reverse().join('');
+    return this.modification ? str.join("") : str.reverse().join("");
   }
 
   decrypt(encryptedMessage, key) {
     if (encryptedMessage === undefined || key === undefined) {
-      throw Error('Incorrect arguments!');
+      throw Error("Incorrect arguments!");
     }
 
     let str = [];
-    const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    const alphabetArr = alphabet.split('');
+    const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    const alphabetArr = alphabet.split("");
 
     // Create keyword of length equal to message
-    let messageArr = encryptedMessage.toUpperCase().split('');
-    let keyArr = key.toUpperCase().split('');
+    let messageArr = encryptedMessage.toUpperCase().split("");
+    let keyArr = key.toUpperCase().split("");
     let keyMessageArr = [];
     let pass = 0;
 
@@ -99,16 +99,19 @@ class VigenereCipheringMachine {
       if (encrypted === -1) {
         str.push(messageArr[i]);
       } else {
-        let originalIndex = (encrypted - shift + alphabetArr.length) % alphabetArr.length;
+        let originalIndex =
+          (encrypted - shift + alphabetArr.length) % alphabetArr.length;
         let original = alphabetArr[originalIndex];
         str.push(original);
       }
     }
 
-    return this.modification ? str.join('') : str.reverse().join('');
+    return this.modification ? str.join("") : str.reverse().join("");
   }
 }
 
 module.exports = {
-  VigenereCipheringMachine
+  directMachine: new VigenereCipheringMachine(),
+  reverseMachine: new VigenereCipheringMachine(false),
+  VigenereCipheringMachine,
 };

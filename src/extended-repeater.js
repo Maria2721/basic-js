@@ -1,4 +1,4 @@
-const {NotImplementedError} = require('../extensions/index.js');
+const { NotImplementedError } = require("../lib");
 
 /**
  * Create a repeating string based on the given parameters
@@ -17,29 +17,29 @@ const {NotImplementedError} = require('../extensions/index.js');
  */
 function repeater(str, options) {
   let newStr = [];
-  let additionStr = '';
+  let additionStr = "";
 
   let addition;
-  let separator = '+';
-  let additionSeparator = '|';
+  let separator = "+";
+  let additionSeparator = "|";
   let repeatTimes = 1;
   let additionRepeatTimes = 1;
 
-  if (Object.hasOwn(options, 'addition')) {
+  if (Object.hasOwn(options, "addition")) {
     addition = options.addition;
-    if (Object.hasOwn(options, 'additionRepeatTimes')) {
+    if (Object.hasOwn(options, "additionRepeatTimes")) {
       additionRepeatTimes = options.additionRepeatTimes;
     }
-    if (Object.hasOwn(options, 'additionSeparator')) {
+    if (Object.hasOwn(options, "additionSeparator")) {
       additionSeparator = options.additionSeparator;
     }
     let additions = Array(additionRepeatTimes).fill(`${addition}`);
     additionStr = additions.join(additionSeparator);
   }
-  if (Object.hasOwn(options, 'repeatTimes')) {
+  if (Object.hasOwn(options, "repeatTimes")) {
     repeatTimes = options.repeatTimes;
   }
-  if (Object.hasOwn(options, 'separator')) {
+  if (Object.hasOwn(options, "separator")) {
     separator = options.separator;
   }
   newStr = Array(repeatTimes).fill(str + additionStr);
@@ -48,5 +48,5 @@ function repeater(str, options) {
 }
 
 module.exports = {
-  repeater
+  repeater,
 };

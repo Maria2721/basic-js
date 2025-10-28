@@ -1,10 +1,10 @@
-const {NotImplementedError} = require('../extensions/index.js');
+const { NotImplementedError } = require("../lib");
 
 /**
  * Calculate turns number and time (in seconds) required
  * to solve puzzle
  *
- * @param {Number} disksNumber number of disks
+ * @param {Number} disks number of disks
  * @param {Number} turnsSpeed speed (in turns/hour)
  * @return {Object} object with props turns (number of turns)
  * and seconds (time in seconds)
@@ -16,10 +16,10 @@ const {NotImplementedError} = require('../extensions/index.js');
  */
 function calculateHanoi(disksNumber, turnsSpeed) {
   const turnsNumber = Math.pow(2, disksNumber) - 1;
-  const secondsNumber = Math.floor(turnsNumber * 3600 / turnsSpeed);
-  return {turns: turnsNumber, seconds: secondsNumber};
+  const secondsNumber = Math.floor((turnsNumber * 3600) / turnsSpeed);
+  return { turns: turnsNumber, seconds: secondsNumber };
 }
 
 module.exports = {
-  calculateHanoi
+  calculateHanoi,
 };

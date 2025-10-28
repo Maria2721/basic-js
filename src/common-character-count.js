@@ -1,4 +1,4 @@
-const {NotImplementedError} = require('../extensions/index.js');
+const { NotImplementedError } = require("../lib");
 
 /**
  * Given two strings, find the number of common characters between them.
@@ -22,7 +22,7 @@ function getCommonCharacterCount(s1, s2) {
   for (let char of s2) {
     characters2[char] = characters2[char] ? characters2[char] + 1 : 1;
   }
-  Object.keys(characters1).forEach(key => {
+  Object.keys(characters1).forEach((key) => {
     if (characters2[key]) {
       common += Math.min(characters1[key], characters2[key]);
     }
@@ -32,5 +32,5 @@ function getCommonCharacterCount(s1, s2) {
 }
 
 module.exports = {
-  getCommonCharacterCount
+  getCommonCharacterCount,
 };
